@@ -36,10 +36,13 @@ const findLargestJoltage = (bankInput: string, size: number) => {
 };
 
 const main = (data: string) => {
-  let result = 0;
+  let joltagePart1 = 0;
+  let joltagePart2 = 0;
   data.split("\n").map((bank) => {
-    result += findLargestJoltage(bank, 12);
+    joltagePart1 += findLargestJoltage(bank, 2);
+    joltagePart2 += findLargestJoltage(bank, 12);
   });
-  console.log("result", result);
+  console.log("result part 1", joltagePart1);
+  console.log("result part 2", joltagePart2);
 };
 export default main;

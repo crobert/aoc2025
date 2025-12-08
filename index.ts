@@ -30,6 +30,7 @@ const execDay = (dayNumber, isDemo) => {
           encoding: "utf8",
         })
       );
+      break;
     case "4":
       day4(
         fs.readFileSync(`./day4-${isDemo ? "demo" : "full"}-input.txt`, {

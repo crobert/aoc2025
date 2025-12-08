@@ -25,11 +25,16 @@ const computeRotation = (result: number, currValue: number, str: string) => {
 
 const main = (data: string) => {
   let result = 0;
+  let resultPart1 = 0;
   let currValue = 50;
   data.split("\n").map((v) => {
     [currValue, result] = computeRotation(result, currValue, v);
+    if (currValue === 0) {
+      resultPart1++;
+    }
   });
-  console.log("result", result);
+  console.log("result part 1", resultPart1);
+  console.log("result part 1", result);
 };
 
 export default main;

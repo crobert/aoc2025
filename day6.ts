@@ -37,10 +37,10 @@ const cephalopodMathTransform = (numbers: string[]) => {
   return parsedNumbers;
 };
 
-const parseProblems = (rawProblems: RawProblemType[], mode: "one" | "two") => {
+const parseProblems = (rawProblems: RawProblemType[], part: "one" | "two") => {
   return rawProblems.map((problem) => {
     const numbers =
-      mode === "one"
+      part === "one"
         ? defaultTransform(problem.numbers)
         : cephalopodMathTransform(problem.numbers);
     return {

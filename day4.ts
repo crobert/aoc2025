@@ -49,13 +49,18 @@ const findMoveableRoller = (matrix: string[]): [number, string[]] => {
 
 const main = (data: string) => {
   const matrix = data.split("\n");
-  let result = 0;
+  let firstRoundMoveableRoller: number;
+  let totalMoveableRoller = 0;
   let currentMatrix = matrix;
   let lastMoveableRoller = 0;
   do {
     [lastMoveableRoller, currentMatrix] = findMoveableRoller(currentMatrix);
-    result += lastMoveableRoller;
+    totalMoveableRoller += lastMoveableRoller;
+    if (!firstRoundMoveableRoller) {
+      firstRoundMoveableRoller = lastMoveableRoller;
+    }
   } while (lastMoveableRoller !== 0);
-  console.log("result", result);
+  console.log("result part 1", firstRoundMoveableRoller);
+  console.log("result part 2", totalMoveableRoller);
 };
 export default main;

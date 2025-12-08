@@ -1,27 +1,31 @@
-const checkNumber = (valueToCheck: string) => {
-  //Regex chiffres répétés une fois à la suite
-  if (/^(\d+)\1+$/.test(valueToCheck)) {
+const checkNumber = (valueToCheck: string, part: "one" | "two") => {
+  const regExp = new RegExp(`^(\\d+)\\1${part === "one" ? "" : "+"}$`);
+  if (regExp.test(valueToCheck)) {
     return parseInt(valueToCheck, 10);
   }
   return 0;
 };
-const checkRange = (result: number, from: string, to: string) => {
+const checkRange = (from: string, to: string, part: "one" | "two") => {
   const fromValue = parseInt(from, 10);
   const toValue = parseInt(to, 10);
   let currValue = fromValue;
+  let sumInvalid = 0;
   while (currValue <= toValue) {
-    result += checkNumber(currValue.toString());
+    sumInvalid += checkNumber(currValue.toString(), part);
     currValue += 1;
   }
-  return result;
+  return sumInvalid;
 };
 
 const main = (data: string) => {
   let result = 0;
+  let resultPart1 = 0;
   data.split(",").map((range) => {
     const [from, to] = range.split("-");
-    result = checkRange(result, from, to);
+    resultPart1 += checkRange(from, to, "one");
+    result += checkRange(from, to, "two");
   });
-  console.log("result", result);
+  console.log("result part 1", resultPart1);
+  console.log("result part 2", result);
 };
 export default main;
