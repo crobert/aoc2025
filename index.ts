@@ -7,6 +7,7 @@ import day4 from "./day4.ts";
 import day5 from "./day5.ts";
 import day6 from "./day6.ts";
 import day7 from "./day7.ts";
+import day8 from "./day8.ts";
 
 const execDay = (dayNumber, isDemo) => {
   switch (dayNumber) {
@@ -55,6 +56,13 @@ const execDay = (dayNumber, isDemo) => {
     case "7":
       day7(
         fs.readFileSync(`./day7-${isDemo ? "demo" : "full"}-input.txt`, {
+          encoding: "utf8",
+        })
+      );
+      break;
+    case "8":
+      day8(
+        fs.readFileSync(`./day8-${isDemo ? "demo" : "full"}-input.txt`, {
           encoding: "utf8",
         })
       );
