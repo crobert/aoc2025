@@ -9,6 +9,7 @@ type DistanceType = {
   boxB: number;
   distance: number;
 };
+
 type CircuitType = number[];
 
 const mergeCircuits = (
